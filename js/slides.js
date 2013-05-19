@@ -6,17 +6,18 @@
  * http://ta.wq.io
  */
 
-define(["wq/lib/jquery", "wq/store", 
+define(["wq/lib/jquery", "wq/lib/marked", "wq/pages", "wq/store", 
         "slides/json", "slides/yaml", "slides/html", "slides/markdown"],
-function($, ds, json, yaml, html, markdown) {
+function($, marked, pages, ds, json, yaml, html, markdown) {
 
-var slides;
+var slides, dskey = {'url': ''};
 
 makeObjects(html, "html");
 makeObjects(markdown, "markdown");
 slides = $.extend(true, {}, json, yaml, html, markdown);
 slides.array = sort(slides, "");
-ds.set({'url':''}, slides.array, true);
+slides.context = context();
+ds.set(dskey, slides.array, true);
 
 return slides;
 
@@ -58,12 +59,51 @@ function sort(items, prefix) {
 
     // Add navigation links to final array
     result.forEach(function(name, i) {
+        result[i].number = i + 1;
         if (i > 0)
             result[i].prev = result[i - 1].id;
         if (i < result.length - 1)
             result[i].next = result[i + 1].id;
     });
     return result;
+}
+
+function context() {
+    return {
+        // Copy of slide list for use by menu
+        'slides': function(){ return slides.array },
+
+        'count': function(){ return slides.array.length },
+
+        // Navigation helpers
+        'current': function() {
+            return this.id == pages.info.prev_path;
+        },
+
+        'before': function() {
+            var current = ds.find(dskey, pages.info.prev_path); 
+            if (current)
+                return this.number < current.number;
+        },
+
+        'after': function() {
+            var current = ds.find(dskey, pages.info.prev_path); 
+            if (current)
+                return this.number > current.number;
+        },
+
+        // Content for menu labels & HTML <title>
+        'label': function() {
+            return this.title || this.id;
+        },
+       
+        // If the context includes a "markdown" attribute, render it as HTML
+        'html': function() {
+            if (!this.markdown)
+                return "";
+            return marked.parse(this.markdown);
+        }
+    }
 }
 
 });

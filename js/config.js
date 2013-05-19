@@ -1,6 +1,6 @@
 // Configuration for wq/app.js
-define(["wq/lib/marked", "wq/pages", "slides"],
-function (marked, pages, slides) {
+define(["slides"],
+function (slides) {
 return {
    // app.js router configuration
    'pages': {
@@ -11,25 +11,10 @@ return {
    // jQuery Mobile transitions
    'transitions': {
       'default': 'slide',
-      'maxwidth': false
+      'maxwidth': 10000
    },
 
    // template defaults
-   'defaults': {
-       // Copy of slide list for use by menu
-       'slides': slides.array, 
-
-       // Content for menu labels & HTML <title>
-       'label': function() {
-           return this.title || this.id;
-       },
-       
-       // If the context includes a "markdown" attribute, render it as HTML
-       'html': function() {
-           if (!this.markdown)
-               return "";
-           return marked.parse(this.markdown);
-       }
-   }
-};
+   'defaults': slides.context
+}
 });
