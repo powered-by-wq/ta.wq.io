@@ -1,0 +1,10 @@
+<div data-role="panel" data-display="overlay">
+  <ul data-role="listview">
+  {{#slides}}
+    {{#section}}
+    <li data-role="list-divider">{{section}}</li>
+    {{/section}}
+    <li><a href="{{pages.base_url}}{{id}}">{{label}}</a></li>
+  {{/slides}}
+  </ul>
+</div>

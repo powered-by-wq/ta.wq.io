@@ -1,0 +1,11 @@
+{{#url}}
+<iframe src="{{url}}">
+</iframe>
+{{/url}}
+{{^url}}
+<ul>
+{{#bullets}}
+  <li>{{.}}</li>
+{{/bullets}}
+</ul>
+{{/url}}

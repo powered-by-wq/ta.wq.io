@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>{{label}}</title>
+  </head>
+  <body>
+    <div data-role="page">
+      {{#title}}
+      <div data-role="header" data-position="fixed" data-id="slide_header">
+        <a href="menu" data-icon="bars" data-iconpos="notext">Menu</a>
+        <h1>{{title}}</h1>
+      </div>
+      {{/title}}
+      <div data-role="content">
+        {{#html}}{{{html}}}{{/html}}
+        {{^html}}
+        {{>slide_content}}
+        {{/html}}
+      </div>
+      <div data-role="footer" data-position="fixed" data-id="slide_footer">
+        {{#prev}}
+        <a data-icon="arrow-l" data-iconpos="notext" class="ui-btn-left" data-direction="reverse"
+           href="{{pages.base_url}}{{prev}}">Previous</a>
+        {{/prev}}
+        <h3>&nbsp;</h3>
+        {{#next}}
+        <a data-icon="arrow-r" data-iconpos="notext" class="ui-btn-right"
+           href="{{pages.base_url}}{{next}}">Next</a>
+          {{/next}}
+      </div>
+    </div>
+  </div>
+</html>

@@ -1,0 +1,56 @@
+{
+    "optimize": {
+        "optimize": "none",
+        "appDir": ".",
+        "baseUrl": "js",
+        "dir": "build",
+        "modules": [
+            {
+                "name": "talk"
+            }
+        ]
+    },
+    "appcache": {
+        "name": "talk.appcache",
+        "css": "css/talk.css",
+        "cache": [
+            "js/wq/lib/require.js"
+        ],
+        "network": ["*", "http://*", "https://*"],
+        "fallback": [""]
+    },
+    "collectjson": [
+        {
+            "paths": ["templates"],
+            "output": "js/templates.js",
+            "type": "html",
+            "jsonp": "define"
+        },
+        {
+            "paths": ["slides"],
+            "output": "js/slides/json.js",
+            "type": "json",
+            "jsonp": "define"
+        },
+        {
+            "paths": ["slides"],
+            "output": "js/slides/yaml.js",
+            "type": "yaml",
+            "extension": "yml",
+            "jsonp": "define"
+        },
+        {
+            "paths": ["slides"],
+            "output": "js/slides/html.js",
+            "type": "html",
+            "jsonp": "define"
+        },
+        {
+            "paths": ["slides"],
+            "output": "js/slides/markdown.js",
+            "type": "markdown",
+            "extension": "md",
+            "jsonp": "define"
+        }
+    ]
+}
