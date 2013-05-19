@@ -1,4 +1,5 @@
 require(["wq/app", "config", "templates", "slides"],
 function(app, config, templates) {
-app.init(config, templates);
+var baseurl = window.location.pathname.replace(/\/$/, "");
+app.init(config, templates, baseurl);
 });
