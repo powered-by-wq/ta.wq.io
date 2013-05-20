@@ -6,9 +6,16 @@
  * http://ta.wq.io
  */
 
-define(["wq/lib/jquery", "wq/lib/marked", "wq/pages", "wq/store", 
+define(["wq/lib/jquery", "wq/lib/marked", "wq/lib/highlight",
+        "wq/pages", "wq/store", 
         "slides/json", "slides/yaml", "slides/html", "slides/markdown"],
-function($, marked, pages, ds, json, yaml, html, markdown) {
+function($, marked, highlight, pages, ds, json, yaml, html, markdown) {
+
+marked.setOptions({
+    'highlight': function(code, lang) {
+        return highlight.highlight(lang, code).value;
+    }
+});
 
 var slides, dskey = {'url': ''};
 
