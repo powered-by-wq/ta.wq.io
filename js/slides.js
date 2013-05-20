@@ -17,6 +17,9 @@ makeObjects(markdown, "markdown");
 slides = $.extend(true, {}, json, yaml, html, markdown);
 slides.array = sort(slides, "");
 slides.context = context();
+slides.init = function() {
+    pages.addRoute('(.+)', 's', onShow);
+};
 ds.set(dskey, slides.array, true);
 
 return slides;
@@ -66,6 +69,18 @@ function sort(items, prefix) {
             result[i].next = result[i + 1].id;
     });
     return result;
+}
+
+function onShow(etype, match, ui, page, evt) {
+    var slide = ds.find(dskey, match[1]);
+    if (!slide)
+        return;
+    if (slide.js) {
+        var modname = (slide.js === true ? match[1] : slide.js);
+        require([modname], function(mod) {
+            mod.run(slide);
+        });
+    }   
 }
 
 function context() {
