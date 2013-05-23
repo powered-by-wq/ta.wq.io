@@ -1,7 +1,7 @@
 tawq
 ====
 
-Write presentations in YAML &amp; Markdown; deploy them as a jQuery Mobile HTML5 app.  Powered by [wq.app](https://github.com/wq/wq.app) and all [the stuff wq.app is powered by](https://github.com/wq/wq.app/tree/master/js/lib).
+Write presentations in YAML &amp; Markdown; deploy them as a jQuery Mobile HTML5 app.  Powered by [wq.app](https://github.com/wq/wq.app) modules and [the modules wq.app is powered by](https://github.com/wq/wq.app/tree/master/js/lib).
 
 Examples
 --------
@@ -10,8 +10,8 @@ See http://ta.wq.io and [tawq's fork network](https://github.com/wq/tawq/network
 Getting Started
 -----
  1. [Fork tawq](https://github.com/wq/tawq/fork)
- 2. You will probably want to rename your fork to the name of your talk, and change your copy of this README.md
- 3. `git submodule init` and `git submodule update` to pull in tawq's dependencies in [wq.app](https://github.com/wq/wq.app)
+ 2. Create a branch in your fork with the name of your talk
+ 3. Remember to `git submodule init` and `git submodule update` to pull in tawq's [wq.app](https://github.com/wq/wq.app) dependencies
 
 Slide Configuration
 -------------------
@@ -40,11 +40,11 @@ Each slide configuration can define the following attributes:
  * **delay** - Seconds to wait before executing the script
 
 ### Ordering
-Rather than ordering alphabetically, every folder (including the root) should have an index.yml or index.json.  This file can also be used as a normal slide, but should have an additional *order* attribute listing all of the other slides in your preferred order.  If the order attribute does not list the index itself it will not be included.  If you do not add an order attribute, the slides will be ordered by whatever Objects.keys() decides is a good order for the compiled dictionary.
+Rather than ordering alphabetically, every folder (including the root) should have an index.yml or index.json.  This file can also be used as a normal slide, but should have an additional **order** attribute listing all of the other slides in your preferred order.  If the order attribute does not list the index itself it will not be included.  If you do not add an order attribute, the slides will be ordered by whatever Objects.keys() decides is a good order for the compiled dictionary.
 
-Each of these rules is totally arbitrary and most can be overridden by changing the application code.
+Each of these rules is totally arbitrary and most/all can be overridden by changing the application code.
 
 Building the Presentation
 -------------------------
 Use `util/wq collectjson` to collect the contents of slides/ into AMD modules in js/slides.
-Use `util/wq build` to do the above, and then optimize the whole js (and css) folder into a single built file.  See app.build.json for configuration options.
+Use `util/wq build` to do the above, and then optimize the whole js (and css) folder into a single talk.js and talk.css.  See app.build.json for configuration options.
