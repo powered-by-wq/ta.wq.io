@@ -2,5 +2,7 @@ title: Example
 section: Introduction
 bullets: 
  - Hello, world!
+js: example
+delay: 10
 order:
  - index

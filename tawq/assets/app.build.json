@@ -3,16 +3,19 @@
         "optimize": "none",
         "appDir": ".",
         "baseUrl": "js",
-        "dir": "build",
+        "dir": "../build",
         "modules": [
             {
-                "name": "talk"
+                "name": "tawq"
             }
-        ]
+        ],
+        "paths": {
+            "assets": "../assets"
+        }
     },
     "appcache": {
-        "name": "talk.appcache",
-        "css": "css/talk.css",
+        "name": "tawq.appcache",
+        "css": "css/tawq.css",
         "cache": [
             "js/wq/lib/require.js"
         ],
@@ -50,6 +53,12 @@
             "output": "js/slides/markdown.js",
             "type": "markdown",
             "extension": "md",
+            "jsonp": "define"
+        },
+        {
+            "paths": ["data"],
+            "output": "js/data.js",
+            "type": "json",
             "jsonp": "define"
         }
     ]

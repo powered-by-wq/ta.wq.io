@@ -1,0 +1,27 @@
+#!/usr/bin/python
+
+import sys
+import tawq
+
+if len(sys.argv) > 1:
+    cmd = sys.argv[1]
+else:
+    cmd = ''
+if len(sys.argv) > 2:
+    path = sys.argv[2]
+else:
+    path = ''
+
+
+if cmd == 'start':
+    tawq.start(path)
+elif cmd == 'build':
+    tawq.build()
+else:
+    print """
+Usage: tawq [command] [path]
+
+Valid commands:
+    start: start a new Tawq source directory
+    build: build your Tawq into a standalone HTML5 app
+"""

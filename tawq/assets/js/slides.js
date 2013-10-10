@@ -8,7 +8,6 @@
 
 define(["wq/lib/jquery", "wq/lib/marked", "wq/lib/highlight",
         "wq/pages", "wq/store", 
-        // NOTE: Run "util/wq collectjson" to create these files
         "slides/json", "slides/yaml", "slides/html", "slides/markdown"],
 function($, marked, highlight, pages, ds, json, yaml, html, markdown) {
 
@@ -98,7 +97,7 @@ function sort(items, prefix) {
 }
 
 // Run custom JS for a slide when it is shown.  
-function onShow(etype, match, ui, page, evt) {
+function onShow(match, ui, params, hash, evt, $page) {
     var slide = ds.find(dskey, match[1]);
     if (!slide)
         return;
@@ -106,8 +105,14 @@ function onShow(etype, match, ui, page, evt) {
         // The custom JS should be in an AMD module with a run() function.
         // For optimal speed, preload the module by require-ing it in custom.js
         var modname = (slide.js === true ? match[1] : slide.js);
-        require([modname], function(mod) {
-            mod.run(slide);
+        require(['assets/' + modname], function(mod) {
+            if (slide.delay)
+                setTimeout(run, slide.delay * 1000);
+            else
+                run();
+            function run() {
+                mod.run(slide, $page);
+            }
         });
     }   
 }
