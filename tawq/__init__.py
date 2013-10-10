@@ -4,6 +4,7 @@ import os, shutil
 from glob import glob
 import pystache
 from wq.app.util.build import Builder
+import uuid
 
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "template")
 TAWQ_DIR = os.path.join(os.path.dirname(__file__), "assets")
@@ -19,6 +20,7 @@ def build(filename='tawq.yml'):
     stage_dir = build_dir + '-src'
 
     version = config.get('version', '0.0.0')
+    version += '-' + str(uuid.uuid4())[:6]
 
     # Create staging directory as copy of tawq js/css/html assets
     shutil.rmtree(stage_dir, ignore_errors=True)
