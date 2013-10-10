@@ -11,7 +11,7 @@
         <h1>{{title}}</h1>
       </div>
       {{/title}}
-      <div data-role="content">
+      <div data-role="content"{{#class}} class="{{class}}"{{/class}}>
         {{#split}}
         <div class="ui-grid-a">
         <div class="ui-block-a">
@@ -41,7 +41,7 @@
            data-iconpos="notext" class="ui-btn-right"
            {{#next_transition}}data-transition="{{next_transition}}"{{/next_transition}}
            href="{{pages.base_url}}{{next}}">Next</a>
-          {{/next}}
+        {{/next}}
       </div>
     </div>
   </div>

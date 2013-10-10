@@ -1,3 +1,5 @@
 title: "My First Talk"
 version: "0.0.0"
 keep-src: false
+optimize: false
+dest: "build"

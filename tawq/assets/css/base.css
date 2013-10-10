@@ -11,6 +11,9 @@
 .ui-content .ui-block-a {
   padding-right: 12px;
 }
+.ui-content a {
+  text-decoration: none
+}
 .ui-page {
   -webkit-backface-visibility: hidden;
 }
@@ -29,4 +32,18 @@ code {
 .map {
   border: 1px solid #999;
   height: 610px;
+}
+img.full-height {
+  height: 610px;
+}
+img.full-width {
+  width: 100%;
+}
+.center {
+  text-align: center;
+}
+.footnote {
+  position:absolute;
+  bottom:2em;
+  font-size:18px;
 }

@@ -48,7 +48,7 @@ def build(filename='tawq.yml'):
     # Tweak app.build.json with updated configuraiton
     appconf = json.load(file('app.build.json'))
     appconf['appcache']['cache'].extend(images)
-    appconf['appcache']['dir'] = os.path.join('..', build_dir)
+    appconf['optimize']['dir'] = os.path.join('..', build_dir)
     if config.get('optimize', False):
         del appconf['optimize']['optimize']
 

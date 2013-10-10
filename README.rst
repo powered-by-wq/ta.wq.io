@@ -50,25 +50,32 @@ Navigation options
    a continuation of a previous one. Often used with
    ``transition: "none"``.
 
-Content options
-~~~~~~~~~~~~~~~
+Basic Content options
+~~~~~~~~~~~~~~~~~~~~~
 
--  **bullets** - A list of bullet points (defined as an array) to use as
-   the slide content. It's usually more flexible to use markdown for
-   this. (Also, slides full of bullet points are boring)
+One (and only one) of the following should be defined:
+
+-  **markdown** - Markdown to be rendered into HTML and used as the
+   slide content. This can be defined in a separate .md file with the same name.
+-  **html** - Raw HTML to be used as the slide content. This can be defined
+   in a separate .html file with the same name.
 -  **url** - A URL to an external page to use as the slide content (via
    an ``<iframe>``). The url will be desplayed at the bottom of the
    slide.
+-  **image** - An image to display at full height (default) or full width.
+-  **bullets** - A list of bullet points (defined as an array) to use as
+   the slide content. It's usually more flexible to use markdown for
+   this. (Also, slides full of bullet points are boring)
+
+Advanced content options
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 -  **hide-url** - Set to true to turn off the url display.
--  **markdown** - Markdown to be rendered into HTML and used as the
-   slide content. It's usually better to define this as a separate .md
-   file with the same name as the configuration.
--  **html** - Raw HTML to be used as the slide content. It's usually
-   better to define this as a separate .html file with the same name as
-   the configuration.
+-  **image-wide** - Set to true to use full width mode for the image
 -  **two-column** - Split the slide into two blocks. The value of this
    should be the name of a second configuration file containing
    content/html to place in the second block.
+-  **class** - CSS class to apply to the slide container div
 
 Scripting options
 ~~~~~~~~~~~~~~~~~
