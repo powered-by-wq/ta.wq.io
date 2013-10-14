@@ -117,13 +117,14 @@ function onShow(match, ui, params, hash, evt, $page) {
         // The custom JS should be in an AMD module with a run() function.
         // For optimal speed, preload the module by require-ing it in custom.js
         var modname = (slide.js === true ? match[1] : slide.js);
+        var last = ds.find(dskey, pages.info.prev_path);
         require(['assets/' + modname], function(mod) {
             if (slide.delay)
                 setTimeout(run, slide.delay * 1000);
             else
                 run();
             function run() {
-                mod.run(slide, $page);
+                mod.run(slide, $page, last);
             }
         });
     }   
