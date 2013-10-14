@@ -17,6 +17,8 @@ if cmd == 'start':
     tawq.start(path)
 elif cmd == 'build':
     tawq.build()
+elif cmd == 'run':
+    tawq.run()
 else:
     print """
 Usage: tawq [command] [path]
@@ -24,4 +26,5 @@ Usage: tawq [command] [path]
 Valid commands:
     start: start a new Tawq source directory
     build: build your Tawq into a standalone HTML5 app
+    run: build and run your Tawq in a web browser
 """

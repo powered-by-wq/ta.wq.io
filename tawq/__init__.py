@@ -6,6 +6,8 @@ import pystache
 from wq.app.util.build import Builder
 import uuid
 
+import SimpleHTTPServer, SocketServer, webbrowser
+
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "template")
 TAWQ_DIR = os.path.join(os.path.dirname(__file__), "assets")
 
@@ -63,6 +65,20 @@ def build(filename='tawq.yml'):
     builder = Builder(version)
     builder.build()
     
+    os.chdir('..')
     if not config.get('keep-src', False):
-        os.chdir('..')
         shutil.rmtree(stage_dir, ignore_errors=True)
+
+def run(filename='tawq.yml'):
+    build(filename)
+    config = yaml.load(file(filename))
+    build_dir = config.get('dest', 'build')
+    port = config.get('port', 8000)
+    os.chdir(build_dir)
+
+    httpd = SocketServer.TCPServer(
+        ("", port),
+        SimpleHTTPServer.SimpleHTTPRequestHandler
+    )
+    webbrowser.open('http://localhost:%s' % port)
+    httpd.serve_forever()
