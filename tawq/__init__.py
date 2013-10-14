@@ -35,7 +35,10 @@ def build(filename='tawq.yml'):
     os.chdir(stage_dir)
 
     # Create a module to include any custom JavaScript
-    jsfiles = ['"%s"' % filename for filename in glob('assets/*.js')]
+    jsfiles = [
+       '"%s"' % filename.replace('.js', '')
+       for filename in glob('assets/*.js')
+    ]
     module = 'require([%s]);' % ','.join(jsfiles)
     open('js/custom.js', 'w').write(module)
 
