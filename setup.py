@@ -40,9 +40,9 @@ setup(
     license='MIT',
     packages=find_packages(),
     package_data=package_data,
-    description='JavaScript web apps with RequireJS, jQuery Mobile, Mustache, and Leaflet',
+    description='Build presentations with YAML, Markdown, and jQuery Mobile',
     long_description=long_description(),
-    install_requires=['wq.app', 'pyyaml', 'pystache'],
+    install_requires=['wq.app>=0.4.2', 'pyyaml', 'pystache'],
     scripts=['tawq/bin/tawq'],
     classifiers = [
         'Development Status :: 3 - Alpha',
