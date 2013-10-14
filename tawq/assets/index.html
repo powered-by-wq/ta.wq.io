@@ -13,6 +13,9 @@
     <div data-role="page" class="ui-page">
       <div data-role="content" style="text-align:center">
         <h1 class="title">{{title}}</h1>
+        {{#subtitle}}
+        <h2 class="subtitle">{{subtitle}}</h2>
+        {{/subtitle}}
         <a data-role="button" data-icon="arrow-r" data-iconpos="right" data-inline="true"
            href="{{first-slide}}">Start Presentation</a>
       </div>
