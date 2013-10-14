@@ -169,11 +169,14 @@ function context() {
         },
 
         // If the context has a "two-column" attribute, load the second column
-        // (must be a sibling of the current slide)
+        // (if string, must be name of a sibling of the current slide)
         'split': function() {
-            if (!this['two-column'] || !this.parent)
+            var second = this['two-column'];
+            if (!second)
                 return false;
-            return this.parent[this['two-column']];
+            if (typeof second == 'string')
+                second = this.parent[second];
+            return second;
         },
 
         // Flip transition - don't used fixed header / footer
