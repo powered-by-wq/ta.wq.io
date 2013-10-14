@@ -51,13 +51,15 @@ function makeObjects(items, key) {
 
 function sort(items, prefix) {
     // Flatten object values to array, recursively if needed
-    var result = [], name, i, order;
-    if (items.index && items.index.order)
+    var result = [], name, i, order, indexConf;
+    if (items.index && items.index.order) {
         // Define an index.yml or index.json with an order attribute...
-        order = items.index.order;
-    else
+        indexConf = items.index;
+        order = indexConf.order;
+    } else {
         // ... or we'll just use dictionary key order
         order = Object.keys(items);
+    }
 
     order.forEach(function(name) {
         if (!items[name]) {
@@ -75,6 +77,16 @@ function sort(items, prefix) {
             result.push(items[name]);
         }
     });
+
+    // Ensure that 'section' and 'transition' properties are used 
+    // in cases where index.yml doesn't list itself
+    if (indexConf && order[0] != 'index' && result.length > 0) {
+        var firstSlide = result[0];
+        if (indexConf.section && !firstSlide.section)
+            firstSlide.section = indexConf.section;
+        if (indexConf.transition && !firstSlide.transition)
+            firstSlide.transition = indexConf.transition;
+    }
 
     // Nested object, return to parent
     if (prefix)
