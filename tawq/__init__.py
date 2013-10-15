@@ -29,9 +29,8 @@ def build(filename='tawq.yml'):
     shutil.copytree(TAWQ_DIR, stage_dir)
 
     # Copy project assets and slide configurations to staging directory
-    shutil.copytree('assets', os.path.join(stage_dir, 'assets'))
-    shutil.copytree('slides', os.path.join(stage_dir, 'slides'))
-    shutil.copytree('data', os.path.join(stage_dir, 'data'))
+    for folder in ('assets', 'slides', 'data'):
+        shutil.copytree(folder, os.path.join(stage_dir, folder))
     os.chdir(stage_dir)
 
     # Create a module to include any custom JavaScript
@@ -74,6 +73,8 @@ def build(filename='tawq.yml'):
     os.chdir('..')
     if not config.get('keep-src', False):
         shutil.rmtree(stage_dir, ignore_errors=True)
+    for folder in ('templates', 'slides', 'data'):
+        shutil.rmtree(os.path.join(build_dir, folder))
 
 def run(filename='tawq.yml'):
     build(filename)

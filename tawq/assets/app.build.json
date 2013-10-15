@@ -4,6 +4,7 @@
         "appDir": ".",
         "baseUrl": "js",
         "dir": "../build",
+        "removeCombined": true,
         "modules": [
             {
                 "name": "tawq"
