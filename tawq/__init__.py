@@ -43,7 +43,10 @@ def build(filename='tawq.yml'):
     open('js/custom.js', 'w').write(module)
 
     # Create a css file to include any custom CSS
-    cssfiles = ['@import url(../assets/%s.css);' for filename in glob('assets/*css')]
+    cssfiles = [
+        '@import url(../%s);' % filename 
+        for filename in glob('assets/*.css')
+    ]
     module = '\n'.join(cssfiles)
     open('css/custom.css', 'w').write(module)
 
