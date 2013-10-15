@@ -6,7 +6,7 @@
     <div data-role="page">
       {{#title}}
       <div data-role="header" {{^flip}}data-position="fixed"{{/flip}} 
-        data-id="slide_header">
+        data-id="slide_header" data-tap-toggle="false">
         <a href="menu" data-icon="bars" data-iconpos="notext">Menu</a>
         <h1>{{title}}</h1>
       </div>
@@ -25,7 +25,7 @@
         </div>
         {{/split}}
       </div>
-      <div data-role="footer" {{^flip}}data-position="fixed"{{/flip}} data-id="slide_footer">
+      <div data-role="footer" {{^flip}}data-position="fixed"{{/flip}} data-id="slide_footer" data-tap-toggle="false">
         {{#prev}}
         <a data-icon="arrow-{{#down}}u{{/down}}{{^down}}l{{/down}}"
            data-iconpos="notext" class="ui-btn-left" data-direction="reverse"
