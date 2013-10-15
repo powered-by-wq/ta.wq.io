@@ -6,19 +6,11 @@
  * http://ta.wq.io
  */
 
-define(["wq/lib/jquery", "wq/lib/marked", "wq/lib/highlight",
-        "wq/pages", "wq/store", 
+define(["wq/lib/jquery", "wq/pages", "wq/store", 
         "slides/json", "slides/yaml", "slides/html", "slides/markdown"],
-function($, marked, highlight, pages, ds, json, yaml, html, markdown) {
+function($, pages, ds, json, yaml, html, markdown) {
 
 var slides, dskey = {'url': ''};
-
-// Connect markdown processor to code highlighter
-marked.setOptions({
-    'highlight': function(code, lang) {
-        return highlight.highlight(lang, code).value;
-    }
-});
 
 // Collect, sort, attach events to and return slides
 makeObjects(html, "html");
@@ -162,13 +154,6 @@ function context() {
             return this.title || this.id;
         },
        
-        // If the context includes a "markdown" attribute, render it as HTML
-        'html': function() {
-            if (!this.markdown)
-                return "";
-            return marked.parse(this.markdown);
-        },
-
         // If the context has a "two-column" attribute, load the second column
         // (if string, must be name of a sibling of the current slide)
         'split': function() {
