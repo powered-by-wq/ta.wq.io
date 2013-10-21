@@ -14,11 +14,13 @@ See http://ta.wq.io.
 Getting Started
 ---------------
 
+Note: this doesn't work yet (still need to publish on PyPI).
+
 ::
 
     pip install tawq
     tawq start my-presentation && cd my-presentation
-    tawq build
+    tawq run
 
 Slide Configuration
 -------------------
