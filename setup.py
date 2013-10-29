@@ -2,7 +2,8 @@ import os
 from setuptools import setup, find_packages
 
 LONG_DESCRIPION = """
-JavaScript web apps with RequireJS, jQuery Mobile, Mustache, and Leaflet
+Build interactive presentations with YAML, Markdown, and jQuery Mobile.
+Powered by wq.app.
 """
 
 def long_description():
@@ -33,7 +34,7 @@ package_data = get_package_data('tawq')
 
 setup(
     name='tawq',
-    version='0.2.0-dev',
+    version='0.2.0',
     author='S. Andrew Sheppard',
     author_email='andrew@wq.io',
     url='http://ta.wq.io',
@@ -49,8 +50,12 @@ setup(
         'Environment :: Web Environment',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: JavaScript',
-        'Topic :: Software Development :: Libraries :: Application Frameworks',
-        'Topic :: Text Processing :: Markup :: HTML'
+        'Topic :: Text Processing :: Markup :: HTML',
+        'Topic :: Multimedia :: Graphics :: Presentation',
+        'Topic :: Software Development :: Pre-processors',
+        'Topic :: Software Development :: Build Tools',
+        'Topic :: Software Development :: Code Generators',
     ]
 )

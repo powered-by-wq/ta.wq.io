@@ -1,10 +1,9 @@
 tawq
 ====
 
-Write presentations in YAML & Markdown; deploy them as a jQuery Mobile
-HTML5 app. Powered by `wq.app <http://wq.io/wq.app>`_ modules
-and `the modules wq.app is powered
-by <http://wq.io/docs/third-party>`_.
+Write presentations in YAML & Markdown; deploy them as a jQuery Mobile HTML5
+app. Powered by `wq.app <http://wq.io/wq.app>`_ and `the modules wq.app is
+powered by <http://wq.io/docs/third-party>`_.
 
 Examples
 --------
@@ -13,9 +12,6 @@ See http://ta.wq.io.
 
 Getting Started
 ---------------
-
-Note: this doesn't work yet (still need to publish on PyPI).
-
 ::
 
     pip install tawq
@@ -99,10 +95,9 @@ does not list the index itself it will not be included. If you do not
 add an order attribute, the slides will be ordered by whatever
 Objects.keys() decides is a good order for the compiled dictionary.
 
-Each of these rules is totally arbitrary and most/all can be overridden
-by changing the application code.
-
 Building the Presentation
 -------------------------
 
-Use ``tawq build``.
+Use ``tawq build`` to compile the presentation into a standalone web app.  Use
+``tawq run`` to build the presentation, run it on localhost, and display it in
+a web browser (intended for use while developing the presentation).
