@@ -2,7 +2,7 @@
     "optimize": {
         "optimize": "none",
         "appDir": ".",
-        "baseUrl": "js",
+        "baseUrl": "js/lib",
         "dir": "../build",
         "removeCombined": true,
         "modules": [
@@ -11,14 +11,17 @@
             }
         ],
         "paths": {
-            "assets": "../assets"
+            "tawq": "../tawq",
+            "slides": "../slides",
+            "assets": "../../assets",
+            "data": "../data"
         }
     },
     "appcache": {
         "name": "tawq.appcache",
         "css": "css/tawq.css",
         "cache": [
-            "js/wq/lib/require.js"
+            "js/lib/require.js"
         ],
         "network": ["*", "http://*", "https://*"],
         "fallback": [""]
@@ -26,7 +29,7 @@
     "collectjson": [
         {
             "paths": ["templates"],
-            "output": "js/templates.js",
+            "output": "js/tawq/templates.js",
             "type": "html",
             "jsonp": "define"
         },

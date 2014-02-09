@@ -1,12 +1,12 @@
 /*!
  * tawq - slides.js
  * Organizes collected configuration & markup into an interlinked slide deck.
- * (c) 2013 S. Andrew Sheppard
+ * (c) 2013-2014 S. Andrew Sheppard
  * http://wq.io/license
  * http://ta.wq.io
  */
 
-define(["wq/lib/jquery", "wq/pages", "wq/store", 
+define(["jquery", "wq/pages", "wq/store", 
         "slides/json", "slides/yaml", "slides/html", "slides/markdown"],
 function($, pages, ds, json, yaml, html, markdown) {
 

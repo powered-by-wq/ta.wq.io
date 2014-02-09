@@ -1,5 +1,5 @@
 // Configuration for wq/app.js
-define(["slides"],
+define(["./slides"],
 function (slides) {
 return {
    // app.js router configuration

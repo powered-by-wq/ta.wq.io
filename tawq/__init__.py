@@ -3,7 +3,7 @@ import json
 import os, shutil
 from glob import glob
 import pystache
-from wq.app.util.build import Builder
+from wq.app.build import Builder
 import uuid
 
 import SimpleHTTPServer, SocketServer, webbrowser
@@ -38,8 +38,8 @@ def build(filename='tawq.yml'):
        '"%s"' % filename.replace('.js', '')
        for filename in glob('assets/*.js')
     ]
-    module = 'require([%s]);' % ','.join(jsfiles)
-    open('js/custom.js', 'w').write(module)
+    module = 'define([%s], function(){});' % ','.join(jsfiles)
+    open('js/tawq/custom.js', 'w').write(module)
 
     # Create a css file to include any custom CSS
     cssfiles = [

@@ -34,7 +34,7 @@ package_data = get_package_data('tawq')
 
 setup(
     name='tawq',
-    version='0.2.0',
+    version='0.3.0',
     author='S. Andrew Sheppard',
     author_email='andrew@wq.io',
     url='http://ta.wq.io',
@@ -43,7 +43,7 @@ setup(
     package_data=package_data,
     description='Build presentations with YAML, Markdown, and jQuery Mobile',
     long_description=long_description(),
-    install_requires=['wq.app>=0.4.2', 'pyyaml', 'pystache'],
+    install_requires=['wq.app>=0.5.0', 'pyyaml', 'pystache'],
     scripts=['tawq/bin/tawq'],
     classifiers = [
         'Development Status :: 3 - Alpha',
