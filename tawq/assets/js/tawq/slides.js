@@ -6,9 +6,11 @@
  * http://ta.wq.io
  */
 
-define(["jquery", "wq/pages", "wq/store", 
+define(["jquery", "wq/pages", "wq/store",
         "slides/json", "slides/yaml", "slides/html", "slides/markdown"],
 function($, pages, ds, json, yaml, html, markdown) {
+/* global require */
+/* global console */
 
 var slides, dskey = {'url': ''};
 
@@ -43,7 +45,7 @@ function makeObjects(items, key) {
 
 function sort(items, prefix) {
     // Flatten object values to array, recursively if needed
-    var result = [], name, i, order, indexConf;
+    var result = [], order, indexConf;
     if (items.index && items.index.order) {
         // Define an index.yml or index.json with an order attribute...
         indexConf = items.index;
@@ -119,7 +121,7 @@ function onShow(match, ui, params, hash, evt, $page) {
                 mod.run(slide, $page, last);
             }
         });
-    }   
+    }
 }
 
 // Context helpers for Mustache templates (see templates/ for uses)
@@ -127,9 +129,9 @@ function context() {
 
     return {
         // Copy of slide list for use by menu
-        'slides': function(){ return slides.array },
+        'slides': function(){ return slides.array; },
 
-        'count': function(){ return slides.array.length },
+        'count': function(){ return slides.array.length; },
 
         // Is this slide the current one? (for menu rendering)
         'current': function() {
@@ -138,13 +140,13 @@ function context() {
 
         // Is this slide before the current one (for reverse transition)
         'before': function() {
-            var current = ds.find(dskey, pages.info.prev_path); 
+            var current = ds.find(dskey, pages.info.prev_path);
             if (current)
                 return this.number < current.number;
         },
 
         'after': function() {
-            var current = ds.find(dskey, pages.info.prev_path); 
+            var current = ds.find(dskey, pages.info.prev_path);
             if (current)
                 return this.number > current.number;
         },
@@ -180,7 +182,7 @@ function context() {
         'down': function() {
             return this.transition == 'slideup';
         }
-    }
+    };
 }
 
 });
