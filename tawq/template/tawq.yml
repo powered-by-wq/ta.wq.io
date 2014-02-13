@@ -4,3 +4,8 @@ version: "0.0.0"
 keep-src: false
 optimize: false
 dest: "build"
+authors:
+  - name: Author Name
+    affiliation:
+      - Affiliation Line 1
+      - Affiliation Line 2

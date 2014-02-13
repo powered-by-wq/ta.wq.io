@@ -16,6 +16,22 @@
         {{#subtitle}}
         <h2 class="subtitle">{{subtitle}}</h2>
         {{/subtitle}}
+        {{#author-width}}
+        <table width="100%">
+          <tr>
+          {{#authors}}
+            <td width="{{author-width}}%">
+              {{name}}<br>
+              <small>
+                {{#affiliation}}
+                {{.}}<br>
+                {{/affiliation}}
+              </small>
+            </td>
+          {{/authors}}
+          </tr>
+        </table>
+        {{/author-width}}
         <a data-role="button" data-icon="arrow-r" data-iconpos="right" data-inline="true"
            href="{{first-slide}}">Start Presentation</a>
       </div>

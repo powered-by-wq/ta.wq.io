@@ -64,6 +64,11 @@ def build(filename='tawq.yml'):
     json.dump(appconf, file('app.build.json', 'w'), indent=4)
 
     # Run index.html through pystache
+    authors = config.get('authors', [])
+    if authors:
+       config['author-width'] = 1.0 / len(authors) * 100
+    else:
+       config['author-width'] = False
     html = pystache.render(file('index.html').read(), config)
     file('index.html', 'w').write(html)
 
