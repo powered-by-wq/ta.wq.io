@@ -1,12 +1,15 @@
 import yaml
 import json
-import os, shutil
+import os
+import shutil
 from glob import glob
 import pystache
 from wq.app.build import Builder
 import uuid
 
-import SimpleHTTPServer, SocketServer, webbrowser
+import SimpleHTTPServer
+import SocketServer
+import webbrowser
 
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "template")
 TAWQ_DIR = os.path.join(os.path.dirname(__file__), "assets")
@@ -14,6 +17,7 @@ TAWQ_DIR = os.path.join(os.path.dirname(__file__), "assets")
 
 def start(project_dir):
     shutil.copytree(TEMPLATE_DIR, project_dir)
+
 
 def build(filename='tawq.yml'):
     config = yaml.load(file(filename))
@@ -35,15 +39,15 @@ def build(filename='tawq.yml'):
 
     # Create a module to include any custom JavaScript
     jsfiles = [
-       '"%s"' % filename.replace('.js', '')
-       for filename in glob('assets/*.js')
+        '"%s"' % filename.replace('.js', '')
+        for filename in glob('assets/*.js')
     ]
     module = 'define([%s], function(){});' % ','.join(jsfiles)
     open('js/tawq/custom.js', 'w').write(module)
 
     # Create a css file to include any custom CSS
     cssfiles = [
-        '@import url(../%s);' % filename 
+        '@import url(../%s);' % filename
         for filename in glob('assets/*.css')
     ]
     module = '\n'.join(cssfiles)
@@ -66,20 +70,21 @@ def build(filename='tawq.yml'):
     # Run index.html through pystache
     authors = config.get('authors', [])
     if authors:
-       config['author-width'] = 1.0 / len(authors) * 100
+        config['author-width'] = 1.0 / len(authors) * 100
     else:
-       config['author-width'] = False
+        config['author-width'] = False
     html = pystache.render(file('index.html').read(), config)
     file('index.html', 'w').write(html)
 
     builder = Builder(version)
     builder.build()
-    
+
     os.chdir('..')
     if not config.get('keep-src', False):
         shutil.rmtree(stage_dir, ignore_errors=True)
     for folder in ('templates', 'slides', 'data'):
         shutil.rmtree(os.path.join(build_dir, folder))
+
 
 def run(filename='tawq.yml'):
     build(filename)
