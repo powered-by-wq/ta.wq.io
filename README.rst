@@ -15,8 +15,34 @@ Getting Started
 ::
 
     pip install tawq
-    tawq start my-presentation && cd my-presentation
+    tawq start my-presentation
+    cd my-presentation
+    ls
+    # assets data slides tawq.yml 
     tawq run
+
+tawq.yml
+-------------------
+The primary configuration file for tawq is called ``tawq.yml``.  An example
+``tawq.yml`` will be created automatically for you by the ``tawq start`` command.
+The configuration will be used to generate an index.html for your talk that
+includes the necessary JavaScript files and a link into your first slide.
+
+index.html options
+~~~~~~~~~~~~~~~~~~
+-  **title**: Title text (will be put in ``<title>`` and an ``<h1>``)
+-  **subtitle**: Optional subtitle text (will be put in an ``<h2>``)
+-  **authors**: List of one or more author blocks.  Each author should have
+   **name** and **affilation** defined.
+-  **first-slide**:  The slide to link to in order to start the presentation.
+
+
+Build options
+~~~~~~~~~~~~~~~~~~
+-  **version**: Optional version number for your talk.
+-  **dest**: Destination folder for the built talk.
+-  **keep-src**: Don't delete the intermediate staging directory directory and AMD
+   modules created during the build (by combining your talk slides with assets in tawq).
 
 Slide Configuration
 -------------------
