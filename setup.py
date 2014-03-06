@@ -46,7 +46,7 @@ setup(
     install_requires=['wq.app>=0.5.0', 'pyyaml', 'pystache'],
     scripts=['tawq/bin/tawq'],
     classifiers = [
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
