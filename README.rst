@@ -2,7 +2,7 @@ tawq
 ====
 
 Write presentations in YAML & Markdown; deploy them as a jQuery Mobile HTML5
-app. Powered by `wq.app <http://wq.io/wq.app>`_ and `the modules wq.app is
+app (with a built-in appcache to support offline use cases). Powered by `wq.app <http://wq.io/wq.app>`_ and `the modules wq.app is
 powered by <http://wq.io/docs/third-party>`_.
 
 Examples
