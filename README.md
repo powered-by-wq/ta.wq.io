@@ -1,25 +1,21 @@
-tawq
+ta.wq.io
 ====
 
-Write presentations in YAML & Markdown; deploy them as a jQuery Mobile
-HTML5 app (with a built-in appcache to support offline use cases).
-Powered by [wq.app](http://wq.io/wq.app) and [the modules wq.app is
-powered by](http://wq.io/docs/third-party).
+ta.wq.io is a [wq-powered](https://wq.io/) app/site for deploying HTML5
+presentations styled by jQuery Mobile, with a built-in appcache to support
+offline use cases.
 
-Examples
---------
+**Note:** due to lack of interest and resources, the previous `tawq` PyPI
+module (which was essentially a static site generator) has been replaced with
+and subsumed into <http://ta.wq.io>, a Django-powered website.  This makes it
+much more like [most wq-powered apps](https://wq.io/examples/), which in turn
+makes it much easier for me ([@sheppard](https://github.com/sheppard) to
+maintain.  Thus, while you are still welcome to reuse and modify this code, it
+is essentially my personal presentation website at this point.
 
-See <http://ta.wq.io>.
+### Settings
 
-Getting Started
----------------
-
-    pip install tawq
-    tawq start my-presentation
-    cd my-presentation
-    ls
-    # assets data slides tawq.yml 
-    tawq run
+**Note:** These are from the old tawq module and need to be mapped to their equivalents in the new site.
 
 tawq.yml
 --------

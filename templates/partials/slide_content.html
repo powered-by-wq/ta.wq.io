@@ -1,0 +1,20 @@
+{{#html}}{{{.}}}{{/html}}
+{{^html}}
+{{#url}}
+<iframe src="{{url}}" {{#mobile}}class="mobile"{{/mobile}}>
+</iframe>
+{{/url}}
+{{^url}}
+{{#image}}
+<img class="full-{{image_mode}}" src="{{image}}"
+style="{{#left}}left: {{left}}px; {{/left}}{{#top}}top: {{top}}px;{{/top}}">
+{{/image}}
+{{^image}}
+<ul>
+{{#bullets}}
+  <li>{{.}}</li>
+{{/bullets}}
+</ul>
+{{/image}}
+{{/url}}
+{{/html}}

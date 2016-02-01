@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    {{>head}}
+    <script>window.TAWQ_PRESENTATION="{{id}}";</script>
+  </head>
+  <body>
+    {{>toolbars}}
+    <div data-role="page" class="ui-page">
+      <div data-role="content" style="text-align:center">
+        <img src="{{image}}">
+        <h1 class="title">{{title}}</h1>
+        {{#subtitle}}
+        <h2 class="subtitle">{{subtitle}}</h2>
+        {{/subtitle}}
+        {{{authors}}}
+        <a data-role="button" data-icon="arrow-r" data-iconpos="right"
+           data-inline="true" href="/slides/{{first.id}}"
+           data-transition="{{first.transition}}">
+             Start Presentation
+         </a>
+         <div class="footer">{{date}}</div>
+      </div>
+    </div>
+  </body>
+</html>

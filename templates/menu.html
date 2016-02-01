@@ -1,0 +1,28 @@
+<div data-role="panel" data-display="overlay">
+  <ul data-role="listview" data-divider-theme="a">
+    <li>
+      <div>
+        <a href="/{{presentation_id}}" data-role="button" data-icon="back"
+           data-inline="true" data-mini="true"
+          >Exit</a>
+        <button onclick='require("wq/app").prefetchAll();' data-icon="refresh" data-mini="true" data-inline="true">
+          Reload
+        </button>
+      </div>
+    </li>
+  {{#slides}}
+    {{#new_section}}
+    <li data-role="list-divider">{{section_label}}</li>
+    {{/new_section}}
+    {{#menu_name}}
+    <li>
+      <a href="{{rt}}/slides/{{id}}"
+        data-transition="slide"
+        {{#current}}class="ui-btn ui-btn-active ui-state-persist"{{/current}}
+        {{#reverse}}data-direction="reverse"{{/reverse}}
+        >{{menu_name}}</a>
+    </li>
+    {{/menu_name}}
+  {{/slides}}
+  </ul>
+</div>

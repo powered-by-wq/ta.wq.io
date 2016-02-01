@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{label}}</title>
+    {{>head}}
+    <script>window.TAWQ_PRESENTATION="{{presentation_id}}";</script>
+  </head>
+  <body>
+    {{>toolbars}}
+    <div data-role="page">
+      <div role="main"{{#class}} class="{{class}}"{{/class}}
+        {{#markdown}}
+        data-lock-zoom={{lock_zoom}}
+        data-zoom={{zoom}} style="-webkit-transform: scale({{zoom}}); -webkit-transform-origin: 0 0; width: {{width}}px;"
+        {{/markdown}}
+        >
+        {{^split}}
+        {{>slide_content}}
+        {{/split}}
+        {{#split}}
+        <div class="ui-grid-a">
+          <div class="ui-block-a">
+            {{>slide_content}}
+          </div>
+          <div class="ui-block-b">
+            {{#second_slide}}{{>slide_content}}{{/second_slide}}
+          </div>
+        </div>
+        {{/split}}
+      </div>
+    </div>
+  </div>
+</html>
