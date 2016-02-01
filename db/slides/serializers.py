@@ -38,7 +38,7 @@ class SlideSerializer(ModelSerializer):
 
     def get_markdown_parts(self, instance):
         parts = instance.markdown and instance.markdown.split('\r\n--\r\n')
-        if len(parts) > 1:
+        if parts and len(parts) > 1:
             return parts
 
     html = serializers.SerializerMethodField()

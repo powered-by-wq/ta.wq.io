@@ -127,6 +127,11 @@ class Slide(models.Model):
             except Section.DoesNotExist:
                 return None
 
+    def save(self, *args, **kwargs):
+        if self.section_id and not self.presentation_id:
+            self.presentation_id = self.section.presentation_id
+        super().save(*args, **kwargs)
+      
     class Meta:
         ordering = ['presentation', 'section__position', 'position']
 
